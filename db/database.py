@@ -1,4 +1,5 @@
 import sqlite3
+import csv
 
 # Connect to database
 conn = sqlite3.connect('cigya.db')
@@ -22,12 +23,14 @@ c.execute("""CREATE TABLE IF NOT EXISTS insurance_carrier (
     status INTEGER
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS service (
     service_id INTEGER PRIMARY KEY AUTOINCREMENT,
     description TEXT,
     billable_cost INTEGER
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS vendor (
     vendor_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -35,6 +38,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS vendor (
     is_preferred INTEGER
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS equipment (
     equipment_id INTEGER PRIMARY KEY AUTOINCREMENT,
     type TEXT,
@@ -44,13 +48,14 @@ c.execute("""CREATE TABLE IF NOT EXISTS equipment (
     FOREIGN KEY (vendor_id) REFERENCES vendor (vendor_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS invoice (
     invoice_id INTEGER PRIMARY KEY AUTOINCREMENT,
     patient_id INT,
     FOREIGN KEY (patient_id) REFERENCES patient (patient_id)
     )""")
 
-
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS user (
     employee_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -60,6 +65,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS user (
     FOREIGN KEY (invoice_id) REFERENCES invoice (invoice_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS physician (
     number INTEGER,
     schedule TEXT,
@@ -67,29 +73,33 @@ c.execute("""CREATE TABLE IF NOT EXISTS physician (
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS pharmacist (
     is_fulltime INTEGER,
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS lab_technician (
     is_fulltime INTEGER,
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS nursing_staff (
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS assistant (
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS subsystem (
     subsystem_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -97,7 +107,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS subsystem (
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS patient (
     patient_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -111,7 +121,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS patient (
     FOREIGN KEY (primary_physician) REFERENCES physician (employee_id)
     )""")
 
-
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS lab_test (
     type_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -119,6 +129,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS lab_test (
     dangerous_values TEXT
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS lab_order (
     order_id INTEGER PRIMARY KEY AUTOINCREMENT,
     result TEXT,
@@ -130,7 +141,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS lab_order (
     FOREIGN KEY (type_id) REFERENCES lab_test (type_id)
     )""")
 
-
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS prescription (
     prescription_id INTEGER PRIMARY KEY AUTOINCREMENT,
     patient_id INT,
@@ -139,6 +150,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS prescription (
     FOREIGN KEY (physician_id) REFERENCES physician (employee_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS medical_encounter (
     encounter_id INTEGER PRIMARY KEY AUTOINCREMENT,
     scheduled_date TEXT,
@@ -158,6 +170,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS medical_encounter (
     FOREIGN KEY (W_employee_id) REFERENCES user (employee_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS medication (
     medication_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -170,6 +183,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS medication (
     FOREIGN KEY (prescription_id) REFERENCES prescription (prescription_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS performed_lab (
     date TEXT,
     technician_id INT,
@@ -178,6 +192,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS performed_lab (
     FOREIGN KEY (order_id) REFERENCES lab_order (order_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS filled_prescription (
     date TEXT,
     pharmacist_id INT,
@@ -186,7 +201,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS filled_prescription (
     FOREIGN KEY (prescription_id) REFERENCES prescription (prescription_id)
     )""")
 
-
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS maintenance (
     maintenance_id INTEGER PRIMARY KEY AUTOINCREMENT,
     resolution TEXT,
@@ -197,6 +212,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS maintenance (
     FOREIGN KEY (equipment_id) REFERENCES equipment (equipment_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS invoice_item (
     item_id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_invoiced TEXT,
@@ -209,6 +225,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS invoice_item (
     FOREIGN KEY (service_id) REFERENCES service (service_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS bought_equipment (
     date TEXT,
     warranty TEXT,
@@ -218,6 +235,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS bought_equipment (
     FOREIGN KEY (equipment_id) REFERENCES equipment (equipment_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS leased_equipment (
     start_date TEXT,
     end_date TEXT,
@@ -227,6 +245,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS leased_equipment (
     FOREIGN KEY (equipment_id) REFERENCES equipment (equipment_id)
     )""")
 
+# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
     date TEXT,
     clinic_id INT,
@@ -239,8 +258,16 @@ c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
 # Insert into tables
 #c.execute("INSERT INTO medical_clinic (name) VALUES ('Cigya')")
 #c.execute("INSERT INTO insurance_carrier (name, address, status) VALUES ('Aetna', '10260 Meanley Dr.' , 0)")
+
+
+# insurance_carriers = open("insurance_carriers.csv")
+# rows = csv.reader(insurance_carriers)
+# c.executemany(
+#     "INSERT INTO insurance_carrier (name, address, status) VALUES (?,?,?)", rows)
+
 c.execute("SELECT * FROM medical_clinic")
 c.execute("SELECT * FROM insurance_carrier")
+
 print(c.fetchall())
 
 conn.commit()
