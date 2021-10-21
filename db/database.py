@@ -30,7 +30,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS service (
     billable_cost INTEGER
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS vendor (
     vendor_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -55,7 +54,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS invoice (
     FOREIGN KEY (patient_id) REFERENCES patient (patient_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS user (
     employee_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -73,27 +71,23 @@ c.execute("""CREATE TABLE IF NOT EXISTS physician (
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS pharmacist (
     is_fulltime INTEGER,
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS lab_technician (
     is_fulltime INTEGER,
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS nursing_staff (
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS assistant (
     employee_id INT,
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
@@ -256,17 +250,47 @@ c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
 
 
 # Insert into tables
-#c.execute("INSERT INTO medical_clinic (name) VALUES ('Cigya')")
-#c.execute("INSERT INTO insurance_carrier (name, address, status) VALUES ('Aetna', '10260 Meanley Dr.' , 0)")
-
+# c.execute("INSERT INTO medical_clinic (name) VALUES ('Cigya')")
+# c.execute("INSERT INTO insurance_carrier (name, address, status) VALUES ('Aetna', '10260 Meanley Dr.' , 0)")
 
 # insurance_carriers = open("insurance_carriers.csv")
-# rows = csv.reader(insurance_carriers)
+# rows_insurance_carriers = csv.reader(insurance_carriers)
 # c.executemany(
 #     "INSERT INTO insurance_carrier (name, address, status) VALUES (?,?,?)", rows)
 
-c.execute("SELECT * FROM medical_clinic")
-c.execute("SELECT * FROM insurance_carrier")
+# vendors = open("vendors.csv")
+# rows_vendors = csv.reader(vendors)
+# c.executemany(
+#     "INSERT INTO vendor (name, address, is_preferred) VALUES (?,?,?)", rows_vendors)
+
+# users = open("users.csv")
+# rows_users = csv.reader(users)
+# c.executemany(
+#     "INSERT INTO user (name, job_title, password) VALUES (?,?,?)", rows_users)
+
+# c.execute("INSERT INTO pharmacist (is_fulltime, employee_id) VALUES ('0', 7)")
+# c.execute("INSERT INTO pharmacist (is_fulltime, employee_id) VALUES ('0', 9)")
+# c.execute("UPDATE pharmacist SET is_fulltime = '1' WHERE employee_id = 9")
+
+# c.execute("INSERT INTO lab_technician (is_fulltime, employee_id) VALUES ('0', 14)")
+# c.execute("INSERT INTO lab_technician (is_fulltime, employee_id) VALUES ('1', 16)")
+
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (4)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (6)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (12)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (15)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (17)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (18)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (19)")
+# c.execute("INSERT INTO nursing_staff (employee_id) VALUES (20)")
+
+# c.execute("INSERT INTO assistant (employee_id) VALUES (2)")
+# c.execute("INSERT INTO assistant (employee_id) VALUES (5)")
+# c.execute("INSERT INTO assistant (employee_id) VALUES (11)")
+
+
+#c.execute("SELECT name FROM user, nursing_staff WHERE user.employee_id=nursing_staff.employee_id")
+c.execute("SELECT * FROM assistant")
 
 print(c.fetchall())
 
