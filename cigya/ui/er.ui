@@ -78,7 +78,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QFormLayout" name="formLayout_2">
+         <layout class="QFormLayout" name="PatientForm">
           <item row="0" column="0">
            <widget class="QLabel" name="patientIDLabel">
             <property name="text">
@@ -127,7 +127,7 @@
            </widget>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="addressLineEdit_2"/>
+           <widget class="QLineEdit" name="addressLineEdit"/>
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="insuranceLabel_2">
@@ -196,7 +196,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QVBoxLayout" name="MedicalEncounterInformation">
         <item>
          <widget class="QLabel" name="label_2">
           <property name="font">
@@ -338,11 +338,50 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>Commit Record</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Pull Patient Information</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Commit Patient Information</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>Pull Medical Encounter Information</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Commit Medical Encounter Information</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>

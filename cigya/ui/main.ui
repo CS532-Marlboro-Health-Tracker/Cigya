@@ -24,17 +24,17 @@
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0" rowminimumheight="200,200" columnminimumwidth="0,175,0,175,175">
       <item row="1" column="1">
-       <widget class="QGroupBox" name="groupBox_6">
+       <widget class="QGroupBox" name="pt">
         <property name="title">
          <string>Pharmacy Order Tracking</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QSplitter" name="splitter_7">
+          <widget class="QSplitter" name="ptSplitter">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="ptInfo">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:10pt; color:#000000; background-color:transparent;&quot;&gt;Maintain information on all prescriptions ordered by physicians for their patients&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -42,7 +42,7 @@
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_7">
+           <widget class="QPushButton" name="ptlaunchBtn">
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -53,17 +53,17 @@
        </widget>
       </item>
       <item row="1" column="4">
-       <widget class="QGroupBox" name="groupBox_4">
+       <widget class="QGroupBox" name="eq">
         <property name="title">
          <string>Equipment Management</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
-          <widget class="QSplitter" name="splitter_4">
+          <widget class="QSplitter" name="eqSplitter">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="eqInfo">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:10pt; color:#000000; background-color:transparent;&quot;&gt;Maintain information about medical equipment owned or leased by the medical clinic&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -71,7 +71,7 @@
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="eqlaunchBtn">
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -82,17 +82,17 @@
        </widget>
       </item>
       <item row="0" column="4">
-       <widget class="QGroupBox" name="groupBox_3">
+       <widget class="QGroupBox" name="lt">
         <property name="title">
          <string>Lab Order Tracking</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
-          <widget class="QSplitter" name="splitter_3">
+          <widget class="QSplitter" name="ltSplitter">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="ltInfo">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:10pt; color:#000000; background-color:transparent;&quot;&gt;Maintain information on all lab tests ordered by physicians for their patients&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -100,7 +100,7 @@
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="ltlaunchBtn">
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -111,17 +111,17 @@
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QGroupBox" name="groupBox_5">
+       <widget class="QGroupBox" name="ib">
         <property name="title">
          <string>Insurance Billing</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_6">
          <item>
-          <widget class="QSplitter" name="splitter_6">
+          <widget class="QSplitter" name="ibSplitter">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="ibInfo">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:10pt; color:#000000; background-color:transparent;&quot;&gt;Bill patients and/or insurance carriers for services provided by the medical clinic&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -129,7 +129,7 @@
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_6">
+           <widget class="QPushButton" name="iblaunchBtn">
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -140,17 +140,17 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QGroupBox" name="groupBox">
+       <widget class="QGroupBox" name="epr">
         <property name="title">
          <string>Electronic Patient Record</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QSplitter" name="splitter">
+          <widget class="QSplitter" name="eprSplitter">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="eprInfo">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:10pt; color:#000000; background-color:transparent;&quot;&gt;Maintain patient information and track all health care encounters that take place at the clinic&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -158,7 +158,7 @@
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="eprlaunchBtn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -175,7 +175,7 @@
        </widget>
       </item>
       <item row="0" column="3">
-       <widget class="QGroupBox" name="groupBox_2">
+       <widget class="QGroupBox" name="sched">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -193,11 +193,11 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QSplitter" name="splitter_2">
+          <widget class="QSplitter" name="schedSplitter">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
            </property>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="schedInfo">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman'; font-size:10pt; color:#000000; background-color:transparent;&quot;&gt;Maintain all physician-patient appointments and other clinic-related physician appointments&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -205,7 +205,7 @@
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="schedlaunchBtn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>
