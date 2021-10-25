@@ -7,8 +7,6 @@ conn = sqlite3.connect('cigya.db')
 # Create a cursor
 c = conn.cursor()
 
-# datatypes null, integer, real (float), text, blob
-
 # Create tables
 
 c.execute("""CREATE TABLE IF NOT EXISTS medical_clinic (
@@ -16,6 +14,7 @@ c.execute("""CREATE TABLE IF NOT EXISTS medical_clinic (
     name TEXT
     )""")
 
+# Status INTEGER - 0 = pays on time, 1 = late with payments, 2 = difficult to get payment
 c.execute("""CREATE TABLE IF NOT EXISTS insurance_carrier (
     carrier_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -23,7 +22,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS insurance_carrier (
     status INTEGER
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS service (
     service_id INTEGER PRIMARY KEY AUTOINCREMENT,
     description TEXT,
@@ -93,7 +91,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS assistant (
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS subsystem (
     subsystem_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -288,9 +285,17 @@ c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
 # c.execute("INSERT INTO assistant (employee_id) VALUES (5)")
 # c.execute("INSERT INTO assistant (employee_id) VALUES (11)")
 
+# services = open("services.csv")
+# rows_services = csv.reader(services)
+# c.executemany(
+#     "INSERT INTO service (description, billable_cost) VALUES (?,?)", rows_services)
 
-#c.execute("SELECT name FROM user, nursing_staff WHERE user.employee_id=nursing_staff.employee_id")
-c.execute("SELECT * FROM assistant")
+# subsystems = open("subsystems.csv")
+# rows_subsystems = csv.reader(subsystems)
+# c.executemany(
+#     "INSERT INTO subsystem (name) VALUES (?)", rows_subsystems)
+
+#c.execute("SELECT * FROM subsystem")
 
 print(c.fetchall())
 
