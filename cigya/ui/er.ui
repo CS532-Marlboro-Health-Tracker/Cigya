@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Electronic Patient Record</string>
   </property>
-  <widget class="QWidget" name="eprwidget">
+  <widget class="QWidget" name="erwidget">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -25,7 +25,7 @@
      <enum>QLayout::SetDefaultConstraint</enum>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="EPRTitle">
+     <layout class="QHBoxLayout" name="erTitle">
       <property name="spacing">
        <number>6</number>
       </property>
@@ -60,12 +60,12 @@
        <number>6</number>
       </property>
       <item>
-       <layout class="QVBoxLayout" name="PatientInformation">
+       <layout class="QVBoxLayout" name="patientInformation">
         <property name="sizeConstraint">
          <enum>QLayout::SetMinimumSize</enum>
         </property>
         <item>
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="patientLabel">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -78,7 +78,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QFormLayout" name="PatientForm">
+         <layout class="QFormLayout" name="patientForm">
           <item row="0" column="0">
            <widget class="QLabel" name="patientIDLabel">
             <property name="text">
@@ -87,118 +87,135 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="patientIDLineEdit"/>
+           <widget class="QLineEdit" name="patientIDInput">
+            <property name="toolTip">
+             <string/>
+            </property>
+            <property name="toolTipDuration">
+             <number>-1</number>
+            </property>
+            <property name="whatsThis">
+             <string extracomment="Input ***"/>
+            </property>
+           </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="patientNameLabel_2">
+           <widget class="QLabel" name="patientnameLabel">
             <property name="text">
              <string>Patient Name</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="patientNameLineEdit_2"/>
+           <widget class="QLineEdit" name="patientnameInput"/>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="telephoneLabel_2">
+           <widget class="QLabel" name="phoneLabel">
             <property name="text">
              <string>Telephone #</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLineEdit" name="telephoneLineEdit_2"/>
+           <widget class="QLineEdit" name="phoneInput"/>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="dateOfBirthLabel_2">
+           <widget class="QLabel" name="dobLabel">
             <property name="text">
              <string>Date Of Birth</string>
             </property>
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QDateEdit" name="dateOfBirthDateEdit_2"/>
+           <widget class="QDateEdit" name="dobInput"/>
           </item>
           <item row="4" column="0">
-           <widget class="QLabel" name="addressLabel_2">
+           <widget class="QLabel" name="addressLabel">
             <property name="text">
              <string>Address</string>
             </property>
            </widget>
           </item>
           <item row="4" column="1">
-           <widget class="QLineEdit" name="addressLineEdit"/>
+           <widget class="QLineEdit" name="addressInput"/>
           </item>
           <item row="5" column="0">
-           <widget class="QLabel" name="insuranceLabel_2">
+           <widget class="QLabel" name="insuranceLabel">
             <property name="text">
              <string>Insurance</string>
             </property>
            </widget>
           </item>
           <item row="5" column="1">
-           <widget class="QLineEdit" name="insuranceLineEdit_2"/>
+           <widget class="QLineEdit" name="insuranceInput"/>
           </item>
           <item row="6" column="0">
-           <widget class="QLabel" name="genderLabel_2">
+           <widget class="QLabel" name="genderLabel">
             <property name="text">
              <string>Gender</string>
             </property>
            </widget>
           </item>
           <item row="6" column="1">
-           <widget class="QComboBox" name="genderComboBox_2"/>
+           <widget class="QComboBox" name="genderInput"/>
           </item>
           <item row="7" column="0">
-           <widget class="QLabel" name="primaryPhysicianLabel_2">
+           <widget class="QLabel" name="primaryphysicianLabel">
             <property name="text">
              <string>Primary Physician</string>
             </property>
            </widget>
           </item>
           <item row="7" column="1">
-           <widget class="QComboBox" name="primaryPhysicianComboBox_2"/>
+           <widget class="QComboBox" name="primaryphysicianInput"/>
           </item>
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <layout class="QHBoxLayout" name="patientLists">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout">
+           <layout class="QVBoxLayout" name="medLayout">
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="QLabel" name="medLabel">
               <property name="text">
                <string>Medications Taking</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="listWidget_2"/>
+             <widget class="QListWidget" name="medicationList"/>
             </item>
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
+           <layout class="QVBoxLayout" name="schedLayout">
             <item>
-             <widget class="QLabel" name="label_5">
+             <widget class="QLabel" name="schedLabel">
               <property name="text">
                <string>Scheduled Appointments</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="listWidget"/>
+             <widget class="QListWidget" name="scheduleList"/>
             </item>
            </layout>
           </item>
          </layout>
         </item>
+        <item>
+         <widget class="QPushButton" name="commitpatientBtn">
+          <property name="text">
+           <string>Commit Patient Information</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="MedicalEncounterInformation">
+       <layout class="QVBoxLayout" name="encounterInformation">
         <item>
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="encounterLabel">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -211,7 +228,7 @@
          </widget>
         </item>
         <item>
-         <layout class="QFormLayout" name="formLayout">
+         <layout class="QFormLayout" name="encounterForm">
           <item row="0" column="0">
            <widget class="QLabel" name="dateLabel">
             <property name="text">
@@ -220,154 +237,125 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QDateEdit" name="dateDateEdit"/>
+           <widget class="QDateEdit" name="dateInput"/>
           </item>
           <item row="1" column="0">
-           <widget class="QLabel" name="practitionerSeenLabel_2">
+           <widget class="QLabel" name="practitionerseenLabel">
             <property name="text">
              <string>Practitioner Seen</string>
             </property>
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QComboBox" name="practitionerSeenComboBox_2"/>
+           <widget class="QComboBox" name="practitionerseenInput"/>
           </item>
           <item row="2" column="0">
-           <widget class="QLabel" name="recommendedFollowupLabel">
+           <widget class="QLabel" name="followupLabel">
             <property name="text">
              <string>Recommended Followup</string>
             </property>
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QDateEdit" name="recommendedFollowupDateEdit"/>
+           <widget class="QDateEdit" name="followupInput"/>
           </item>
           <item row="3" column="0">
-           <widget class="QLabel" name="referralToLabel">
+           <widget class="QLabel" name="referralLabel">
             <property name="text">
              <string>Referral to</string>
             </property>
            </widget>
           </item>
           <item row="3" column="1">
-           <widget class="QComboBox" name="referralToComboBox"/>
+           <widget class="QComboBox" name="referralInput"/>
           </item>
          </layout>
         </item>
         <item>
-         <widget class="QTabWidget" name="tabWidget">
+         <widget class="QTabWidget" name="encounterNotes">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
-          <widget class="QWidget" name="PatientComplaints">
+          <widget class="QWidget" name="vitalTab">
            <attribute name="title">
             <string>Vital Signs</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
-             <widget class="QTextEdit" name="textEdit"/>
+             <widget class="QTextEdit" name="vitalInput"/>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_2">
+          <widget class="QWidget" name="practitionernotesTab">
            <attribute name="title">
             <string>Practitioner Notes</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
-             <widget class="QTextEdit" name="textEdit_2"/>
+             <widget class="QTextEdit" name="practitionernotesInput"/>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab">
+          <widget class="QWidget" name="diagnosisTab">
            <attribute name="title">
             <string>Diagnosis</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_11">
             <item>
-             <widget class="QTextEdit" name="textEdit_3"/>
+             <widget class="QTextEdit" name="diagnosisInput"/>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_3">
+          <widget class="QWidget" name="treatmentTab">
            <attribute name="title">
             <string>Treatment Plan</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_12">
             <item>
-             <widget class="QTextEdit" name="textEdit_4"/>
+             <widget class="QTextEdit" name="treatmentInput">
+              <property name="whatsThis">
+               <string/>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <layout class="QHBoxLayout" name="encounterLists">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
+           <layout class="QVBoxLayout" name="labLayout">
             <item>
-             <widget class="QLabel" name="label_6">
+             <widget class="QLabel" name="labLabel">
               <property name="text">
                <string>Lab Orders</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QListView" name="listView"/>
+             <widget class="QListView" name="labList"/>
             </item>
            </layout>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_9">
+           <layout class="QVBoxLayout" name="pharmacyLayout">
             <item>
-             <widget class="QLabel" name="label_7">
+             <widget class="QLabel" name="pharmacyLabel">
               <property name="text">
                <string>Pharmacy Orders</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QListWidget" name="listWidget_3"/>
+             <widget class="QListWidget" name="pharmacyList"/>
             </item>
            </layout>
           </item>
          </layout>
         </item>
-       </layout>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="text">
-           <string>Pull Patient Information</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>Commit Patient Information</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_6">
-        <item>
-         <widget class="QPushButton" name="pushButton_4">
-          <property name="text">
-           <string>Pull Medical Encounter Information</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="commitencounterBtn">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>

@@ -24,7 +24,7 @@
     <item row="3" column="0">
      <layout class="QFormLayout" name="loginForm">
       <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
+       <enum>QLayout::SetMinimumSize</enum>
       </property>
       <item row="0" column="0">
        <widget class="QLabel" name="usernameLbl">
@@ -34,7 +34,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="usernameInput"/>
+       <widget class="QLineEdit" name="usernameInput">
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="passwordLbl">
@@ -48,19 +52,6 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="title">
-      <property name="font">
-       <font>
-        <family>Segoe Print</family>
-        <pointsize>40</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Cigya Health</string>
-      </property>
-     </widget>
-    </item>
     <item row="4" column="0">
      <widget class="QPushButton" name="loginBtn">
       <property name="sizePolicy">
@@ -71,6 +62,19 @@
       </property>
       <property name="text">
        <string>Login</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="title">
+      <property name="font">
+       <font>
+        <family>Segoe Print</family>
+        <pointsize>40</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Cigya Health</string>
       </property>
      </widget>
     </item>
