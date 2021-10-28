@@ -98,7 +98,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS subsystem (
     FOREIGN KEY (employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS patient (
     patient_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -295,7 +294,12 @@ c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
 # c.executemany(
 #     "INSERT INTO subsystem (name) VALUES (?)", rows_subsystems)
 
-#c.execute("SELECT * FROM subsystem")
+patients = open("patients.csv")
+rows_patients = csv.reader(patients)
+c.executemany(
+    "INSERT INTO patient (name, number, address, birthdate, gender) VALUES (?,?,?,?,?)", rows_patients)
+
+c.execute("SELECT * FROM patient")
 
 print(c.fetchall())
 
