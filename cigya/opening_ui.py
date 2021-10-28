@@ -14,9 +14,6 @@ class Ui(QtWidgets.QMainWindow):
         #name, done1 = QtWidgets.QInputDialog.getText(self, 'Input Dialog', 'Enter your name.')
         pass
 
-def login_clicked():
-    print("Login Clicked")
-
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     window = Ui()
