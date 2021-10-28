@@ -1,12 +1,13 @@
 from functions import login
 from PyQt5 import QtWidgets, uic
 import sys
+import sqlite3
 
 class Ui(QtWidgets.QMainWindow):
     def __init__(self):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('cigya/ui/login.ui', self) # Load the .ui file
-        self.text = "yeet"
+        self.conn = sqlite3.connect('cigya.db')
         self.signalSetup()
         self.show() # Show the GUI
 
