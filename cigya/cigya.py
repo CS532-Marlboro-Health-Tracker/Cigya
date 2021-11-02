@@ -7,7 +7,7 @@ class loginUI(QtWidgets.QMainWindow):
     def __init__(self):
         super(loginUI, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('cigya/ui/login.ui', self) # Load the .ui file
-        self.conn = sqlite3.connect('cigya.db')
+        self.conn = sqlite3.connect('db/cigya.db')
         self.main = mainUI()
         self.signalSetup()
         self.show()
@@ -18,6 +18,8 @@ class loginUI(QtWidgets.QMainWindow):
 
         self.usernameInput = self.findChild(QtWidgets.QLineEdit, 'usernameInput')
         self.passwordInput = self.findChild(QtWidgets.QLineEdit, 'passwordInput')
+
+        self.loginBtn.setProperty()
 
 class mainUI(QtWidgets.QMainWindow):
     def __init__(self):
