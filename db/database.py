@@ -2,7 +2,7 @@ import sqlite3
 import csv
 
 # Connect to database
-conn = sqlite3.connect('cigya.db')
+conn = sqlite3.connect('db/cigya.db')
 
 # Create a cursor
 c = conn.cursor()
@@ -294,10 +294,10 @@ c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
 # c.executemany(
 #     "INSERT INTO subsystem (name) VALUES (?)", rows_subsystems)
 
-patients = open("patients.csv")
-rows_patients = csv.reader(patients)
-c.executemany(
-    "INSERT INTO patient (name, number, address, birthdate, gender) VALUES (?,?,?,?,?)", rows_patients)
+# patients = open("patients.csv")
+# rows_patients = csv.reader(patients)
+# c.executemany(
+#     "INSERT INTO patient (name, number, address, birthdate, gender) VALUES (?,?,?,?,?)", rows_patients)
 
 c.execute("SELECT * FROM patient")
 
