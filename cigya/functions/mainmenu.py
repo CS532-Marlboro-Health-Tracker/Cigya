@@ -1,4 +1,4 @@
-def disable_unused(self):
+def disable_restricted(self):
     pass
 
 def launch_ui(self, ui):

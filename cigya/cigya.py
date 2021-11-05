@@ -1,4 +1,4 @@
-from functions import login, mainmenu, er, sched
+from functions import menu, login, mainmenu, er, sched, lt, ib, lt
 from PyQt5 import QtWidgets, uic
 import sys
 import sqlite3
@@ -13,9 +13,18 @@ class cigyaApp():
         self.pt_UI = ptUI(self)
         self.ib_UI = ibUI(self)
         self.eq_UI = eqUI(self)
+    
+    # def exit_app(self):
+    #     print("Shortcut pressed") #verification of shortcut press
+    #     self.close()
 
 class cigyaUI(QtWidgets.QMainWindow):
     conn = sqlite3.connect('db/cigya.db')
+
+    def __init__(self, cls):
+        super(cigyaUI, self).__init__()
+        self.cigyaApp = cls
+        menu.setup(self)
 
     def getUIObj(self):
         items = self.findChildren(QtWidgets.QWidget)
@@ -23,9 +32,8 @@ class cigyaUI(QtWidgets.QMainWindow):
 
 class loginUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(loginUI, self).__init__(cls)
         uic.loadUi('cigya/ui/login.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
 
     def signalSetup(self):
@@ -33,11 +41,10 @@ class loginUI(cigyaUI):
         
 class mainUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(mainUI, self).__init__(cls)
         uic.loadUi('cigya/ui/main.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
-        mainmenu.disable_unused(self)
+        mainmenu.disable_restricted(self)
     
     def signalSetup(self):
         self.eprlaunchBtn.clicked.connect(lambda: mainmenu.launch_ui(self,"er"))
@@ -49,18 +56,18 @@ class mainUI(cigyaUI):
 
 class erUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(erUI, self).__init__(cls)
         uic.loadUi('cigya/ui/er.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
     
     def signalSetup(self):
-        pass
+        self.commitpatientBtn.clicked.connect(lambda: er.commitPatient(self))
+        self.patientIDInput.textChanged.connect(lambda: er.id_input(self))
+
 class schedUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(schedUI, self).__init__(cls)
         uic.loadUi('cigya/ui/sched.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
     
     def signalSetup(self):
@@ -68,9 +75,8 @@ class schedUI(cigyaUI):
 
 class ltUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(ltUI, self).__init__(cls)
         uic.loadUi('cigya/ui/lt.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
     
     def signalSetup(self):
@@ -78,9 +84,8 @@ class ltUI(cigyaUI):
 
 class ptUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(ptUI, self).__init__(cls)
         uic.loadUi('cigya/ui/pt.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
     
     def signalSetup(self):
@@ -88,9 +93,8 @@ class ptUI(cigyaUI):
 
 class ibUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(ibUI, self).__init__(cls)
         uic.loadUi('cigya/ui/ib.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
     
     def signalSetup(self):
@@ -98,9 +102,8 @@ class ibUI(cigyaUI):
 
 class eqUI(cigyaUI):
     def __init__(self, cls):
-        super(cigyaUI, self).__init__()
+        super(eqUI, self).__init__(cls)
         uic.loadUi('cigya/ui/eq.ui', self)
-        self.cigyaApp = cls
         self.signalSetup()
     
     def signalSetup(self):

@@ -80,50 +80,8 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>566</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
-    </property>
-    <addaction name="actionAdministrator_Login"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionHelp_Page"/>
-   </widget>
-   <widget class="QMenu" name="menuMenu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-    <addaction name="actionElectronic_Patient_Record"/>
-    <addaction name="actionPhysician_Scheduler"/>
-    <addaction name="actionLab_Order_Tracking"/>
-    <addaction name="actionPharmacy_Order_Tracking"/>
-    <addaction name="actionInsurance_Billing"/>
-    <addaction name="actionEquipment_Inventory_and_Maintenance"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuMenu"/>
-   <addaction name="menuSettings"/>
-   <addaction name="menuHelp"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionHelp_Page">
+  <action name="actionHelp">
    <property name="text">
     <string>Help Page</string>
    </property>
@@ -136,34 +94,39 @@
     <string>User Management</string>
    </property>
   </action>
-  <action name="actionElectronic_Patient_Record">
+  <action name="actionER">
    <property name="text">
     <string>Electronic Patient Record</string>
    </property>
   </action>
-  <action name="actionPhysician_Scheduler">
+  <action name="actionSCHED">
    <property name="text">
     <string>Physician Scheduler</string>
    </property>
   </action>
-  <action name="actionLab_Order_Tracking">
+  <action name="actionLT">
    <property name="text">
     <string>Lab Order Tracking</string>
    </property>
   </action>
-  <action name="actionPharmacy_Order_Tracking">
+  <action name="actionPT">
    <property name="text">
     <string>Pharmacy Order Tracking</string>
    </property>
   </action>
-  <action name="actionInsurance_Billing">
+  <action name="actionIB">
    <property name="text">
     <string>Insurance Billing</string>
    </property>
   </action>
-  <action name="actionEquipment_Inventory_and_Maintenance">
+  <action name="actionEQ">
    <property name="text">
     <string>Equipment Inventory and Maintenance</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>
