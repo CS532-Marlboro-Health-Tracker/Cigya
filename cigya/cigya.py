@@ -46,12 +46,11 @@ class loginUI(cigyaUI):
 class mainUI(cigyaUI):
     def __init__(self, cls):
         super(mainUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/main.ui', self)
-        else:
-            uic.loadUi('cigya/ui/main.ui', self)
+        ui = 'ui/main.ui' if system() == "Darwin" else 'cigya/ui/main.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
         mainmenu.disable_restricted(self)
+
     
     def signalSetup(self):
         self.eprlaunchBtn.clicked.connect(lambda: mainmenu.launch_ui(self,"er"))
@@ -64,10 +63,8 @@ class mainUI(cigyaUI):
 class erUI(cigyaUI):
     def __init__(self, cls):
         super(erUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/er.ui', self)
-        else:
-            uic.loadUi('cigya/ui/er.ui', self)
+        ui = 'ui/er.ui' if (system() == "Darwin") else 'cigya/ui/er.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -79,10 +76,8 @@ class erUI(cigyaUI):
 class schedUI(cigyaUI):
     def __init__(self, cls):
         super(schedUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/sched.ui', self)
-        else:
-            uic.loadUi('cigya/ui/sched.ui', self)
+        ui = 'ui/sched.ui' if (system() == "Darwin") else 'cigya/ui/sched.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -91,10 +86,8 @@ class schedUI(cigyaUI):
 class ltUI(cigyaUI):
     def __init__(self, cls):
         super(ltUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/lt.ui', self)
-        else:
-            uic.loadUi('cigya/ui/lt.ui', self)
+        ui = 'ui/lt.ui' if (system() == "Darwin") else 'cigya/ui/lt.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -103,10 +96,8 @@ class ltUI(cigyaUI):
 class ptUI(cigyaUI):
     def __init__(self, cls):
         super(ptUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/pt.ui', self)
-        else:
-            uic.loadUi('cigya/ui/pt.ui', self)
+        ui = 'ui/pt.ui' if (system() == "Darwin") else 'cigya/ui/pt.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -115,10 +106,8 @@ class ptUI(cigyaUI):
 class ibUI(cigyaUI):
     def __init__(self, cls):
         super(ibUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/ib.ui', self)
-        else:
-            uic.loadUi('cigya/ui/ib.ui', self)
+        ui = 'ui/ib.ui' if (system() == "Darwin") else 'cigya/ui/ib.ut'
+        uic.loadUi(ui, self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -127,10 +116,8 @@ class ibUI(cigyaUI):
 class eqUI(cigyaUI):
     def __init__(self, cls):
         super(eqUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/eq.ui', self)
-        else:
-            uic.loadUi('cigya/ui/eq.ui', self)
+        ui = 'ui/eq.ui' if (system() == "Darwin") else 'cigya/ui/eq.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
     
     def signalSetup(self):
