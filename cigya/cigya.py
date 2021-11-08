@@ -63,6 +63,8 @@ class erUI(cigyaUI):
     def signalSetup(self):
         self.commitpatientBtn.clicked.connect(lambda: er.commitPatient(self))
         self.patientIDInput.textChanged.connect(lambda: er.id_input(self))
+        self.genderInput.addItem("Male")
+        self.genderInput.addItem("Female")
 
 class schedUI(cigyaUI):
     def __init__(self, cls):

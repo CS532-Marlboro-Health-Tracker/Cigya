@@ -1,4 +1,5 @@
 import re
+from PyQt5.QtCore import QDate
 
 def verifyName(name:str) -> bool:
     '''
@@ -13,12 +14,20 @@ def verifyPhone(phoneNumber:str) -> bool:
     return re.search(phone_pattern, phoneNumber)
 
 def id_input(self):
-    cursor = self.conn.execute("SELECT patient_id, name FROM patient")
+    cursor = self.conn.execute("SELECT patient_id, name, number, address, birthdate, gender FROM patient")
     for row in cursor:
-        print(row[0], row[1])
-        # if row[0] == self.patientIDInput.text():
-        #     print(self.patientIDInput.text())
-        #     # return
+        if str(row[0]) == self.patientIDInput.text():
+            self.patientnameInput.setText(row[1])
+            self.phoneInput.setText(row[2])
+            date = [int(out) for out in row[4].split("/")]
+            self.dobInput.setDate(QDate(date[2], date[0], date[1]))
+            self.addressInput.setText(row[3])
+            self.genderInput.setCurrentText(row[5])
+            return
+    self.patientnameInput.clear()
+    self.phoneInput.clear()
+    self.dobInput.setDate(QDate(2000, 1, 1))
+    self.addressInput.clear()
     
 def commitPatient(self):
     '''
