@@ -21,6 +21,12 @@
     <bool>false</bool>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
     <item row="3" column="0">
      <layout class="QFormLayout" name="loginForm">
       <property name="sizeConstraint">

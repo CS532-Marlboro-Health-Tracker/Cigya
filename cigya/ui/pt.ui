@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>774</width>
-    <height>599</height>
+    <width>1059</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,49 +20,170 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>774</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <property name="leftMargin">
+     <number>10</number>
     </property>
-    <addaction name="actionPrint"/>
-   </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
+    <property name="rightMargin">
+     <number>10</number>
     </property>
-    <addaction name="actionAdministrator_Login"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionHelp_Page"/>
-   </widget>
-   <widget class="QMenu" name="menuMenu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-    <addaction name="actionElectronic_Patient_Record"/>
-    <addaction name="actionPhysician_Scheduler"/>
-    <addaction name="actionLab_Order_Tracking"/>
-    <addaction name="actionPharmacy_Order_Tracking"/>
-    <addaction name="actionInsurance_Billing"/>
-    <addaction name="actionEquipment_Inventory_and_Maintenance"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuMenu"/>
-   <addaction name="menuSettings"/>
-   <addaction name="menuHelp"/>
+    <item>
+     <layout class="QHBoxLayout" name="erTitle">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>Segoe Print</family>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Pharmacy Order Tracking</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="prescriptionIDLabel">
+            <property name="text">
+             <string>Prescription ID</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="prescriptionIDLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="patientIDLabel">
+            <property name="text">
+             <string>Patient ID</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="patientIDLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="patientNameLabel">
+            <property name="text">
+             <string>Patient Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="patientNameLineEdit"/>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="physicianNameLabel">
+            <property name="text">
+             <string>Physician Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QComboBox" name="physicianNameComboBox"/>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="prescribedMedicationLabel">
+            <property name="text">
+             <string>Prescribed Medication</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="prescribedMedicationComboBox"/>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="dosageLabel">
+            <property name="text">
+             <string>Dosage</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLineEdit" name="dosageLineEdit"/>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="dosageFrequencyLabel">
+            <property name="text">
+             <string>Dosage Frequency</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QLineEdit" name="dosageFrequencyLineEdit"/>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="prescriptionFilledDateLabel">
+            <property name="text">
+             <string>Prescription Filled Date</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QDateEdit" name="prescriptionFilledDateDateEdit"/>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="pharmacistFilledLabel">
+            <property name="text">
+             <string>Pharmacist Filled</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QComboBox" name="pharmacistFilledComboBox"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Commit Record</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>All Prescriptions</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="lineEdit"/>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listWidget"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionHelp_Page">

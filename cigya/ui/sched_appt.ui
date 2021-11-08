@@ -6,23 +6,124 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>581</width>
-    <height>194</height>
+    <width>459</width>
+    <height>280</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>581</width>
-     <height>21</height>
-    </rect>
-   </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>47</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe Print</family>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="text">
+       <string>Schedule Appointment</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QFormLayout" name="scheduleForm">
+      <item row="0" column="0">
+       <widget class="QLabel" name="patientIDLabel">
+        <property name="text">
+         <string>Patient ID</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="patientIDInput"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="patientnameLabel">
+        <property name="text">
+         <string>Patient Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="patientnameInput">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="physicianLabel">
+        <property name="text">
+         <string>Physician</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="physicianInput"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="apptStartLabel">
+        <property name="text">
+         <string>Appointment Start</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QDateTimeEdit" name="apptStartInput"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="apptTypeLabel">
+        <property name="text">
+         <string>Type of Appointment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="apptTypeInput"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="apptStopLabel">
+        <property name="text">
+         <string>Appointment End</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QDateTimeEdit" name="apptStopInput"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="confirmBtns">
+      <item>
+       <widget class="QPushButton" name="makeBtn">
+        <property name="text">
+         <string>Make Appointment</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancelBtn">
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

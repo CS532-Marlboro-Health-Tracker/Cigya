@@ -21,6 +21,12 @@
     <bool>false</bool>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>10</number>
+    </property>
+    <property name="rightMargin">
+     <number>10</number>
+    </property>
     <item>
      <layout class="QHBoxLayout" name="schedTitle">
       <item>
@@ -46,12 +52,23 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="physicians">
       <item>
-       <widget class="QTableView" name="physicianTable"/>
+       <layout class="QVBoxLayout" name="physLayout">
+        <item>
+         <widget class="QLabel" name="physicianLbl">
+          <property name="text">
+           <string>Physicians</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableView" name="physicianTable"/>
+        </item>
+       </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <layout class="QVBoxLayout" name="apptBtnLayout">
         <item>
          <widget class="QPushButton" name="newApptBtn">
           <property name="sizePolicy">
@@ -83,52 +100,16 @@
      </layout>
     </item>
     <item>
+     <widget class="QLabel" name="calendarLbl">
+      <property name="text">
+       <string>Calendar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QColumnView" name="calendarColumn"/>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1056</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionPrint"/>
-   </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
-    </property>
-    <addaction name="actionAdministrator_Login"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionHelp_Page"/>
-   </widget>
-   <widget class="QMenu" name="menuMenu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-    <addaction name="actionElectronic_Patient_Record"/>
-    <addaction name="actionPhysician_Scheduler"/>
-    <addaction name="actionLab_Order_Tracking"/>
-    <addaction name="actionPharmacy_Order_Tracking"/>
-    <addaction name="actionInsurance_Billing"/>
-    <addaction name="actionEquipment_Inventory_and_Maintenance"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuMenu"/>
-   <addaction name="menuSettings"/>
-   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionHelp_Page">
