@@ -61,7 +61,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS user (
     FOREIGN KEY (invoice_id) REFERENCES invoice (invoice_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS physician (
     number INTEGER,
     schedule TEXT,
@@ -111,7 +110,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS patient (
     FOREIGN KEY (primary_physician) REFERENCES physician (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS lab_test (
     type_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -119,7 +117,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS lab_test (
     dangerous_values TEXT
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS lab_order (
     order_id INTEGER PRIMARY KEY AUTOINCREMENT,
     result TEXT,
@@ -131,7 +128,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS lab_order (
     FOREIGN KEY (type_id) REFERENCES lab_test (type_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS prescription (
     prescription_id INTEGER PRIMARY KEY AUTOINCREMENT,
     patient_id INT,
@@ -140,7 +136,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS prescription (
     FOREIGN KEY (physician_id) REFERENCES physician (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS medical_encounter (
     encounter_id INTEGER PRIMARY KEY AUTOINCREMENT,
     scheduled_date TEXT,
@@ -160,7 +155,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS medical_encounter (
     FOREIGN KEY (W_employee_id) REFERENCES user (employee_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS medication (
     medication_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
@@ -173,7 +167,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS medication (
     FOREIGN KEY (prescription_id) REFERENCES prescription (prescription_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS performed_lab (
     date TEXT,
     technician_id INT,
@@ -182,7 +175,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS performed_lab (
     FOREIGN KEY (order_id) REFERENCES lab_order (order_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS filled_prescription (
     date TEXT,
     pharmacist_id INT,
@@ -235,7 +227,6 @@ c.execute("""CREATE TABLE IF NOT EXISTS leased_equipment (
     FOREIGN KEY (equipment_id) REFERENCES equipment (equipment_id)
     )""")
 
-# TODO
 c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
     date TEXT,
     clinic_id INT,
@@ -299,7 +290,49 @@ c.execute("""CREATE TABLE IF NOT EXISTS service_provided (
 # c.executemany(
 #     "INSERT INTO patient (name, number, address, birthdate, gender) VALUES (?,?,?,?,?)", rows_patients)
 
-c.execute("SELECT * FROM patient")
+# c.execute("INSERT INTO physician (number, employee_id) VALUES ('950-136-9177', 1)")
+# c.execute("INSERT INTO physician (number, employee_id) VALUES ('958-186-9607', 3)")
+# c.execute("INSERT INTO physician (number, employee_id) VALUES ('440-423-9937', 8)")
+# c.execute("INSERT INTO physician (number, employee_id) VALUES ('950-324-2639', 10)")
+# c.execute("INSERT INTO physician (number, employee_id) VALUES ('958-322-2234', 13)")
+
+# c.execute("INSERT INTO prescription (patient_id, physician_id) VALUES (2, 13)")
+# c.execute("INSERT INTO prescription (patient_id, physician_id) VALUES (4, 1)")
+# c.execute("INSERT INTO prescription (patient_id, physician_id) VALUES (3, 1)")
+# c.execute("INSERT INTO prescription (patient_id, physician_id) VALUES (5, 8)")
+
+# c.execute("INSERT INTO medication (name, description, side_effects, dosage, frequency_of_use, prescription_id) VALUES ('Vicodin', 'Used to relieve moderate to severe pain','Nausea, vomiting, dizziness', '10 mg/300 mg', '1-2 tablets taken every 4-6 hours as needed', 1)")
+# c.execute("INSERT INTO medication (name, description, side_effects, dosage, frequency_of_use, prescription_id) VALUES ('Vicodin', 'Used to relieve moderate to severe pain', 'Nausea, vomiting, dizziness', '10 mg/300 mg', '1-2 tablets taken every 4-6 hours as needed', 4)")
+# c.execute("INSERT INTO medication (name, description, side_effects, dosage, frequency_of_use, prescription_id) VALUES ('Atorvastatin', 'Used reduce the risk of heart attack and stroke', 'Joint pain, insomnia, nausea, lost of appetite', '20 mg', 'Once a day', 2)")
+# c.execute("INSERT INTO medication (name, description, side_effects, dosage, frequency_of_use, prescription_id) VALUES ('Metformin', 'Helps control blood sugar levels','Bloating, stomach pain, headache, muscle pain', '500 mg', 'Twice a day', 3)")
+
+# c.execute("INSERT INTO filled_prescription (date, pharmacist_id, prescription_id) VALUES ('3/4/2021', 7, 1)")
+# c.execute("INSERT INTO filled_prescription (date, pharmacist_id, prescription_id) VALUES ('9/9/2021', 7, 2)")
+# c.execute("INSERT INTO filled_prescription (date, pharmacist_id, prescription_id) VALUES ('5/4/2021', 9, 3)")
+# c.execute("INSERT INTO filled_prescription (date, pharmacist_id, prescription_id) VALUES ('10/8/2021', 7, 4)")
+
+# encounters = open("db/medical_encounters.csv")
+# rows_encounters = csv.reader(encounters)
+# c.executemany(
+#     "INSERT INTO medical_encounter (scheduled_date, date_created, patient_id, S_employee_id, W_employee_id) VALUES (?,?,?,?,?)", rows_encounters)
+
+# c.execute("INSERT INTO lab_test (name, normal_values) VALUES ('White blood cells (WBCs)', '4.500-10.000 cells/mcL')")
+# c.execute("INSERT INTO lab_test (name, normal_values) VALUES ('Red blood cell count (RBC)', 'Men: 14-17 gm/dL, Women: 12-15 gm/dL')")
+# c.execute(
+#     "INSERT INTO lab_test (name, normal_values) VALUES ('Mean corpuscular volume (MCV)', '70-95')")
+# c.execute("INSERT INTO lab_test (name, normal_values) VALUES ('Hemoglobin (Hbg)', 'Men: 13-18 g/dL, Women: 12-16 g/dL')")
+
+# lab_orders = open("db/lab_orders.csv")
+# rows_lab_orders = csv.reader(lab_orders)
+# c.executemany(
+#     "INSERT INTO lab_order (result, physician_id, patient_id, type_id) VALUES (?,?,?,?)", rows_lab_orders)
+
+# performed_labs = open("db/performed_lab.csv")
+# rows_performed_labs = csv.reader(performed_labs)
+# c.executemany(
+#     "INSERT INTO performed_lab (date, technician_id, order_id) VALUES (?,?,?)", rows_performed_labs)
+
+c.execute("SELECT * FROM performed_lab")
 
 print(c.fetchall())
 
