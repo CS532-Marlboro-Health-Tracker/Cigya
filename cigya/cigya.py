@@ -19,7 +19,7 @@ class cigyaApp():
     #     self.close()
 
 class cigyaUI(QtWidgets.QMainWindow):
-    conn = sqlite3.connect('db/cigya.db')
+    conn = sqlite3.connect('../db/cigya.db')
 
     def __init__(self, cls):
         super(cigyaUI, self).__init__()
