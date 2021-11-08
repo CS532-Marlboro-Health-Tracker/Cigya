@@ -51,6 +51,8 @@ def commitPatient(self):
         #primary_physician:int = int(self.primaryphysicianInput.currentText())
         primary_physician = 1
 
+        # TODO: Primary physician needs to be identified from patient ID, then query needs to be made from DB for all matching physician IDs.
+
         query += f" ({patient_name}, {patient_phone_number}, {patient_address}, {patient_dob}, {patient_gender}, {patient_insurance}, {primary_physician}, {primary_physician});"
 
         cur = self.conn.cursor()
