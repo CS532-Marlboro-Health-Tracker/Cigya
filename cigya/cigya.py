@@ -27,17 +27,11 @@ class cigyaUI(QtWidgets.QMainWindow):
         self.cigyaApp = cls
         menu.setup(self)
 
-    def getUIObj(self):
-        items = self.findChildren(QtWidgets.QWidget)
-        [setattr(self, item.objectName(), item) for item in items]
-
 class loginUI(cigyaUI):
     def __init__(self, cls):
         super(loginUI, self).__init__(cls)
-        if (system() == "Darwin"):
-            uic.loadUi('ui/login.ui', self)
-        else:
-            uic.loadUi('cigya/ui/login.ui', self)
+        ui = 'ui/login.ui' if (system() == "Darwin") else 'cigya/ui/login.ui'
+        uic.loadUi(ui, self)
         self.signalSetup()
 
     def signalSetup(self):
@@ -50,7 +44,6 @@ class mainUI(cigyaUI):
         uic.loadUi(ui, self)
         self.signalSetup()
         mainmenu.disable_restricted(self)
-
     
     def signalSetup(self):
         self.eprlaunchBtn.clicked.connect(lambda: mainmenu.launch_ui(self,"er"))
@@ -106,7 +99,7 @@ class ptUI(cigyaUI):
 class ibUI(cigyaUI):
     def __init__(self, cls):
         super(ibUI, self).__init__(cls)
-        ui = 'ui/ib.ui' if (system() == "Darwin") else 'cigya/ui/ib.ut'
+        ui = 'ui/ib.ui' if (system() == "Darwin") else 'cigya/ui/ib.ui'
         uic.loadUi(ui, self)
         self.signalSetup()
     
@@ -124,7 +117,7 @@ class eqUI(cigyaUI):
         pass
 
 if __name__ == '__main__':
-    print("Trix Tesimon,Physician,dgXcWH")
+    print("Trix Tesimon, dgXcWH")
     app = QtWidgets.QApplication(sys.argv)
     window = cigyaApp()
     window.login_UI.show()

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>636</width>
-    <height>501</height>
+    <height>544</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -224,49 +224,6 @@
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>636</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionPrint"/>
-   </widget>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
-    </property>
-    <addaction name="actionAdministrator_Login"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Help</string>
-    </property>
-    <addaction name="actionHelp_Page"/>
-   </widget>
-   <widget class="QMenu" name="menuMenu">
-    <property name="title">
-     <string>Menu</string>
-    </property>
-    <addaction name="actionElectronic_Patient_Record"/>
-    <addaction name="actionPhysician_Scheduler"/>
-    <addaction name="actionLab_Order_Tracking"/>
-    <addaction name="actionPharmacy_Order_Tracking"/>
-    <addaction name="actionInsurance_Billing"/>
-    <addaction name="actionEquipment_Inventory_and_Maintenance"/>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuMenu"/>
-   <addaction name="menuSettings"/>
-   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionHelp_Page">
