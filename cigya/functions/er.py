@@ -44,8 +44,6 @@ def commitPatient(self):
         patient_phone_number:str = self.phoneInput.text()
         patient_address:str = self.addressInput.text()
         patient_dob:str = self.dobInput.date()
-
-        # FIXME: Genders are not available in the dropdown.
         patient_gender:str = self.genderInput.currentText()
 
         # FIXME: How does this connect with the DB?
@@ -53,8 +51,19 @@ def commitPatient(self):
 
         # FIXME: Primary physician is drop down in GUI, but integer field in the DB. Additionally, this field is queried from the DB. Need
         # to figure that out in order to populate these values.
-        primary_physician:int = int(self.primaryphysicianInput.currentText())
+        #primary_physician:int = int(self.primaryphysicianInput.currentText())
+        primary_physician = 1
 
-        self.conn.cursor().executemany(query, (patient_name, patient_phone_number,patient_address,patient_dob,patient_gender,patient_insurance,primary_physician))
+        values = (
+            patient_name,
+            patient_phone_number,
+            patient_address,
+            patient_dob,
+            patient_gender,
+            patient_insurance,
+            primary_physician
+        )
+
+        self.conn.cursor().executemany(query, values)
         self.conn.commit()
         print("Executed")

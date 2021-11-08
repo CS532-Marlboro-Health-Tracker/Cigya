@@ -2,6 +2,7 @@ from functions import menu, login, mainmenu, er, sched, lt, ib, lt
 from PyQt5 import QtWidgets, uic
 import sys
 import sqlite3
+from platform import system
 
 class cigyaApp():
     def __init__(self):
@@ -19,7 +20,7 @@ class cigyaApp():
     #     self.close()
 
 class cigyaUI(QtWidgets.QMainWindow):
-    conn = sqlite3.connect('db/cigya.db')
+    conn = sqlite3.connect('../db/cigya.db') if (system() == "Darwin") else sqlite3.connect('db/cigya.db')
 
     def __init__(self, cls):
         super(cigyaUI, self).__init__()
@@ -33,7 +34,10 @@ class cigyaUI(QtWidgets.QMainWindow):
 class loginUI(cigyaUI):
     def __init__(self, cls):
         super(loginUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/login.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/login.ui', self)
+        else:
+            uic.loadUi('cigya/ui/login.ui', self)
         self.signalSetup()
 
     def signalSetup(self):
@@ -42,7 +46,10 @@ class loginUI(cigyaUI):
 class mainUI(cigyaUI):
     def __init__(self, cls):
         super(mainUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/main.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/main.ui', self)
+        else:
+            uic.loadUi('cigya/ui/main.ui', self)
         self.signalSetup()
         mainmenu.disable_restricted(self)
     
@@ -57,7 +64,10 @@ class mainUI(cigyaUI):
 class erUI(cigyaUI):
     def __init__(self, cls):
         super(erUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/er.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/er.ui', self)
+        else:
+            uic.loadUi('cigya/ui/er.ui', self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -69,7 +79,10 @@ class erUI(cigyaUI):
 class schedUI(cigyaUI):
     def __init__(self, cls):
         super(schedUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/sched.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/sched.ui', self)
+        else:
+            uic.loadUi('cigya/ui/sched.ui', self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -78,7 +91,10 @@ class schedUI(cigyaUI):
 class ltUI(cigyaUI):
     def __init__(self, cls):
         super(ltUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/lt.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/lt.ui', self)
+        else:
+            uic.loadUi('cigya/ui/lt.ui', self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -87,7 +103,10 @@ class ltUI(cigyaUI):
 class ptUI(cigyaUI):
     def __init__(self, cls):
         super(ptUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/pt.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/pt.ui', self)
+        else:
+            uic.loadUi('cigya/ui/pt.ui', self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -96,7 +115,10 @@ class ptUI(cigyaUI):
 class ibUI(cigyaUI):
     def __init__(self, cls):
         super(ibUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/ib.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/ib.ui', self)
+        else:
+            uic.loadUi('cigya/ui/ib.ui', self)
         self.signalSetup()
     
     def signalSetup(self):
@@ -105,7 +127,10 @@ class ibUI(cigyaUI):
 class eqUI(cigyaUI):
     def __init__(self, cls):
         super(eqUI, self).__init__(cls)
-        uic.loadUi('cigya/ui/eq.ui', self)
+        if (system() == "Darwin"):
+            uic.loadUi('ui/eq.ui', self)
+        else:
+            uic.loadUi('cigya/ui/eq.ui', self)
         self.signalSetup()
     
     def signalSetup(self):
