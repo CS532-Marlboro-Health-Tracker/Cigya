@@ -1,4 +1,8 @@
 from PyQt5 import QtWidgets
+import sys
+import webbrowser
+
+url = "https://github.com/CS532-Marlboro-Health-Tracker/Cigya"
 
 def setup(self):
     self.menu = self.menuBar()
@@ -11,7 +15,7 @@ def setup(self):
     exitAction = QtWidgets.QAction('&Close App', self)        
     exitAction.setShortcut('Ctrl+E')
     exitAction.setStatusTip('Close all applications')
-    # exitAction.triggered.connect(lambda: close(self))
+    exitAction.triggered.connect(lambda: sys.exit())
 
     userAction = QtWidgets.QAction('&User Management', self)
     userAction.setStatusTip('Manage Users')
@@ -19,7 +23,7 @@ def setup(self):
 
     docAction = QtWidgets.QAction('&Documentation', self)
     docAction.setStatusTip('Get Online Documentation')
-    # exitAction.triggered.connect(lambda: close(self))
+    docAction.triggered.connect(lambda: webbrowser.open(url))
 
     self.fileMenu = self.menu.addMenu("&File")
     self.menuMenu = self.menu.addMenu("&Menu")
