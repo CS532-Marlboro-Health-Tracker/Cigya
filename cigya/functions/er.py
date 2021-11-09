@@ -29,12 +29,24 @@ def id_input(self):
     self.dobInput.setDate(QDate(2000, 1, 1))
     self.addressInput.clear()
     
+# def commitOrUpdatePatient(self):
+#     if len(self.patientIDInput.text()) == 0:
+#         commitPatient(self)
+#     else:
+#         updatePatient(self)
+
+
+# def updatePatient(self):
+#     pass
+
+
 def commitPatient(self):
     '''
     Function commits new patient to the DB. If the patient ID field is completed in at the time of calling this function, this function will
     serve as "updatePatient" instead, where the information portions filled out will be updated for the repsective ID provided in the DB.
     '''
-    query = "INSERT INTO patient (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES"
+
+    #FIXME: Need to get a list of physicans for drop down?
 
     if len(self.patientIDInput.text()) == 0:
         patient_name:str = self.patientnameInput.text()
@@ -53,9 +65,15 @@ def commitPatient(self):
 
         # TODO: Primary physician needs to be identified from patient ID, then query needs to be made from DB for all matching physician IDs.
 
-        query += f" ({patient_name}, {patient_phone_number}, {patient_address}, {patient_dob}, {patient_gender}, {patient_insurance}, {primary_physician}, {primary_physician});"
-
-        cur = self.conn.cursor()
-        cur.execute(query)
+        c = self.conn.cursor()
+        c.execute("INSERT INTO patient (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES (?, ?, ?, ?, ?, ?, ?)", (
+            patient_name,
+            patient_phone_number,
+            patient_address,
+            patient_dob, 
+            patient_gender,
+            patient_insurance,
+            primary_physician
+        ))
         self.conn.commit()
         print("Executed")
