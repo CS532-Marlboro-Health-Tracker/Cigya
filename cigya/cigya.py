@@ -14,10 +14,6 @@ class cigyaApp():
         self.pt_UI = ptUI(self)
         self.ib_UI = ibUI(self)
         self.eq_UI = eqUI(self)
-    
-    # def exit_app(self):
-    #     print("Shortcut pressed") #verification of shortcut press
-    #     self.close()
 
 class cigyaUI(QtWidgets.QMainWindow):
     conn = sqlite3.connect('../db/cigya.db') if (system() == "Darwin") else sqlite3.connect('db/cigya.db')

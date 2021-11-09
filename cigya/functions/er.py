@@ -18,7 +18,7 @@ def id_input(self):
     for row in cursor:
         if str(row[0]) == self.patientIDInput.text():
             self.patientnameInput.setText(row[1])
-            self.phoneInput.setText(row[2])
+            self.phoneInput.setText(str(row[2]))
             date = [int(out) for out in row[4].split("/")]
             self.dobInput.setDate(QDate(date[2], date[0], date[1]))
             self.addressInput.setText(row[3])
@@ -47,33 +47,37 @@ def commitPatient(self):
     '''
 
     #FIXME: Need to get a list of physicans for drop down?
+    patient_name:str = self.patientnameInput.text()
+    patient_phone_number:str = self.phoneInput.text()
+    patient_address:str = self.addressInput.text()
+    patient_dob:str = self.dobInput.date().toString("MM/dd/yyyy")
+    patient_gender:str = self.genderInput.currentText()
 
-    if len(self.patientIDInput.text()) == 0:
-        patient_name:str = self.patientnameInput.text()
-        patient_phone_number:str = self.phoneInput.text()
-        patient_address:str = self.addressInput.text()
-        patient_dob:str = self.dobInput.date()
-        patient_gender:str = self.genderInput.currentText()
+    # FIXME: How does this connect with the DB?
+    patient_insurance:str = self.insuranceInput.text()
 
-        # FIXME: How does this connect with the DB?
-        patient_insurance:str = self.insuranceInput.text()
+    # FIXME: Primary physician is drop down in GUI, but integer field in the DB. Additionally, this field is queried from the DB. Need
+    # to figure that out in order to populate these values.
+    #primary_physician:int = int(self.primaryphysicianInput.currentText())
+    primary_physician = 1
 
-        # FIXME: Primary physician is drop down in GUI, but integer field in the DB. Additionally, this field is queried from the DB. Need
-        # to figure that out in order to populate these values.
-        #primary_physician:int = int(self.primaryphysicianInput.currentText())
-        primary_physician = 1
+    # TODO: Primary physician needs to be identified from patient ID, then query needs to be made from DB for all matching physician IDs.
 
-        # TODO: Primary physician needs to be identified from patient ID, then query needs to be made from DB for all matching physician IDs.
-
-        c = self.conn.cursor()
-        c.execute("INSERT INTO patient (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES (?, ?, ?, ?, ?, ?, ?)", (
-            patient_name,
+    data = [patient_name,
             patient_phone_number,
             patient_address,
             patient_dob, 
             patient_gender,
             patient_insurance,
-            primary_physician
-        ))
-        self.conn.commit()
-        print("Executed")
+            primary_physician]
+
+    if self.patientIDInput.text():
+        sql = "INSERT INTO patient (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    else:
+        sql = "UPDATE patient SET name = ?, number = ?, address = ?, birthdate = ?, gender = ?, carrier_id = ?, primary_physician = ? WHERE patient_id = ?"
+        data.append(int(self.patientIDInput.text()))
+
+    c = self.conn.cursor()
+    c.execute(sql, tuple(data))
+    self.conn.commit()
+    print("Executed")

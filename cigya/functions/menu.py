@@ -68,7 +68,3 @@ def menu_setup(self):
     self.menuMenu.addAction(ptAction)
     self.menuMenu.addAction(ibAction)
     self.menuMenu.addAction(eqAction)
-
-# def close(self):
-#     #need to add confirmation here
-#     self.cigyaApp.exit_app()
