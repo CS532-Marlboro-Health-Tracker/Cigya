@@ -148,7 +148,7 @@
           <item row="5" column="0">
            <widget class="QLabel" name="insuranceLabel">
             <property name="text">
-             <string>Insurance</string>
+             <string>Insurance Carrier ID</string>
             </property>
            </widget>
           </item>

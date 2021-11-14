@@ -1,17 +1,43 @@
 import re
 from PyQt5.QtCore import QDate
+from PyQt5.QtWidgets import QMessageBox
 
-def verifyName(name:str) -> bool:
-    '''
-    Verifies the name provided to ensure it is alphabetic characters (and hyphens) only.
-    '''
-    name_pattern:str = "^[a-zA-z]+-?[a-zA-z]+$"
-    return re.search(name_pattern, name)
 
-def verifyPhone(phoneNumber:str) -> bool:
-    # TODO: What is our pattern for phones numbers?
-    phone_pattern:str = "[0-9]{10}"
-    return re.search(phone_pattern, phoneNumber)
+def verifyInformation(self):
+    #TODO: Fix name and address patterns.
+    name_pattern:str = ("""
+                    [a-zA-Z ]{2,}\s[a-zA-Z ]{2,}|
+                    [a-zA-Z ]{2,}-[a-zA-Z ]{2,}\s[a-zA-Z ]{2,}|
+                    [a-zA-Z ]{2,}\s[a-zA-Z ]{2,}-[a-zA-Z ]{2,}|
+                    [a-zA-Z ]{2,}-[a-zA-Z ]{2,}\s[a-zA-Z ]{2,}-[a-zA-Z ]{2,}
+                    """)
+    phone_pattern:str = "[0-9]{3}-[0-9]{3}-[0-9]{4}"
+    address_pattern:str = "[0-9]{1,}\s[A-Z]{1}[a-z]*\s(Street|St.|St|Drive|Dr.|Dr|Place|Pl.|Pl|Lane|Ln.|Ln)"
+    insurance_carrier_pattern:str = "[0-9]{1,}\s"
+
+    good_name:bool = bool(re.search(name_pattern, self.patientnameInput.text()))
+    if not good_name:
+        pass # TODO: Do something here.
+
+    good_phone_number:bool = bool(re.search(name_pattern, self.phoneInput.text()))
+    if not good_phone_number:
+        pass # TODO: Do something here
+
+    good_address:bool = bool(re.search(name_pattern, self.addressInput.text()))
+    if not good_address:
+        pass # TODO: Do something here
+
+    good_insurance_carrier:bool = bool(re.search(name_pattern, self.insuranceInput.text()))
+    if not good_insurance_carrier:
+        pass # TODO: Do something here
+
+
+    # Use this below in order to highlight border for incorrect entries.
+    #myEditField.setStyleSheet("QLineEdit { border : 2px solid green;}")
+
+    if good_name and good_phone_number and good_address and good_insurance_carrier:
+        commitPatient(self)
+
 
 def id_input(self):
     cursor = self.conn.execute("SELECT patient_id, name, number, address, birthdate, gender FROM patient")
@@ -23,54 +49,42 @@ def id_input(self):
             self.dobInput.setDate(QDate(date[2], date[0], date[1]))
             self.addressInput.setText(row[3])
             self.genderInput.setCurrentText(row[5])
+            # FIXME: Fix DB so that it has information for insurance and primary care physician.
+            # self.insuranceInput.setText(row[6])
+            # self.primaryphysicianInput.setCurrentText(row[7])
             return
     self.patientnameInput.clear()
     self.phoneInput.clear()
     self.dobInput.setDate(QDate(2000, 1, 1))
     self.addressInput.clear()
-    
-# def commitOrUpdatePatient(self):
-#     if len(self.patientIDInput.text()) == 0:
-#         commitPatient(self)
-#     else:
-#         updatePatient(self)
+    self.insuranceInput.clear()
+    self.primaryphysicianInput.clear()
 
-
-# def updatePatient(self):
-#     pass
-
+def verifyCommit(self):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Question)
+    msg.setText("Are you sure you want to update this patient?" if self.patientIDInput.text() else "Are you sure you want to commit a new patient?")
+    msg.setWindowTitle("Update Patient" if self.patientIDInput.text() else "Confirm New Patient")
+    msg.exec()
+    # FIXME: Fix this button.
+    msg.setStandardButtons(QMessageBox.Ok)
+    msg.buttonClicked.connect(commitPatient)
 
 def commitPatient(self):
-    '''
-    Function commits new patient to the DB. If the patient ID field is completed in at the time of calling this function, this function will
-    serve as "updatePatient" instead, where the information portions filled out will be updated for the repsective ID provided in the DB.
-    '''
+    data = [
+        str(self.patientnameInput.text()),
+        str(self.phoneInput.text()),
+        str(self.addressInput.text()),
+        str(self.dobInput.date().toString("MM/dd/yyyy")),
+        str(self.genderInput.currentText()),
+        str(self.insuranceInput.text()),
+        str(self.primaryphysicianInput.currentText())
+    ]
 
-    #FIXME: Need to get a list of physicans for drop down?
-    patient_name:str = self.patientnameInput.text()
-    patient_phone_number:str = self.phoneInput.text()
-    patient_address:str = self.addressInput.text()
-    patient_dob:str = self.dobInput.date().toString("MM/dd/yyyy")
-    patient_gender:str = self.genderInput.currentText()
 
-    # FIXME: How does this connect with the DB?
-    patient_insurance:str = self.insuranceInput.text()
 
-    # FIXME: Primary physician is drop down in GUI, but integer field in the DB. Additionally, this field is queried from the DB. Need
-    # to figure that out in order to populate these values.
-    #primary_physician:int = int(self.primaryphysicianInput.currentText())
-    primary_physician = 1
-
-    # TODO: Primary physician needs to be identified from patient ID, then query needs to be made from DB for all matching physician IDs.
-
-    data = [patient_name,
-            patient_phone_number,
-            patient_address,
-            patient_dob, 
-            patient_gender,
-            patient_insurance,
-            primary_physician]
-
+    
+    
     if self.patientIDInput.text():
         sql = "INSERT INTO patient (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES (?, ?, ?, ?, ?, ?, ?)"
     else:
@@ -80,4 +94,3 @@ def commitPatient(self):
     c = self.conn.cursor()
     c.execute(sql, tuple(data))
     self.conn.commit()
-    print("Executed")

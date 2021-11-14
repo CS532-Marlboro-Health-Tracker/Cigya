@@ -57,10 +57,16 @@ class erUI(cigyaUI):
         self.signalSetup()
     
     def signalSetup(self):
-        self.commitpatientBtn.clicked.connect(lambda: er.commitPatient(self))
+        self.commitpatientBtn.clicked.connect(lambda: er.verifyCommit(self))
         self.patientIDInput.textChanged.connect(lambda: er.id_input(self))
         self.genderInput.addItem("Male")
         self.genderInput.addItem("Female")
+        cursor = self.conn.execute("SELECT employee_id FROM physician")
+        for row in cursor:
+            query = f"SELECT name FROM user WHERE employee_id = {row[0]}"
+            physicians_list = self.conn.execute(query)
+            for physician in physicians_list:
+                self.primaryphysicianInput.addItem(str(physician[0]))
 
 class schedUI(cigyaUI):
     def __init__(self, cls):
