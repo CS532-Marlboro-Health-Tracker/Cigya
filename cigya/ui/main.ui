@@ -43,6 +43,9 @@
             </property>
            </widget>
            <widget class="QPushButton" name="ptlaunchBtn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -72,6 +75,9 @@
             </property>
            </widget>
            <widget class="QPushButton" name="eqlaunchBtn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -101,6 +107,9 @@
             </property>
            </widget>
            <widget class="QPushButton" name="ltlaunchBtn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -130,6 +139,9 @@
             </property>
            </widget>
            <widget class="QPushButton" name="iblaunchBtn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>Open Application</string>
             </property>
@@ -159,6 +171,9 @@
             </property>
            </widget>
            <widget class="QPushButton" name="eprlaunchBtn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -206,6 +221,9 @@
             </property>
            </widget>
            <widget class="QPushButton" name="schedlaunchBtn">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>

@@ -39,7 +39,6 @@ class mainUI(cigyaUI):
         ui = 'ui/main.ui' if system() == "Darwin" else 'cigya/ui/main.ui'
         uic.loadUi(ui, self)
         self.signalSetup()
-        mainmenu.disable_restricted(self)
     
     def signalSetup(self):
         self.eprlaunchBtn.clicked.connect(lambda: mainmenu.launch_ui(self,"er"))
@@ -120,6 +119,7 @@ class eqUI(cigyaUI):
 
 if __name__ == '__main__':
     print("Trix Tesimon, dgXcWH")
+    print("Michele McPhelim, DwpLa0iG4Z5P")
     app = QtWidgets.QApplication(sys.argv)
     window = cigyaApp()
     window.login_UI.show()
