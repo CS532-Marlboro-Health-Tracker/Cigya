@@ -13,7 +13,6 @@ def id_input(self):
             self.addressInput.setText(row[3])
             self.genderInput.setCurrentText(row[5])
             self.insuranceInput.setText(str(row[6]))
-<<<<<<< HEAD
             if row[7] == 1:
                 self.primaryphysicianInput.setCurrentText("Trix Tesimon")
             elif row[7] == 3:
@@ -24,11 +23,12 @@ def id_input(self):
                 self.primaryphysicianInput.setCurrentText("Trisha Cummungs")
             else:
                 self.primaryphysicianInput.setCurrentText("Cobby MacFle")
-=======
 
-            
-            # self.primaryphysicianInput.setCurrentText(row[7])
->>>>>>> 004ee2fdc08a2786ed6b3611f1d51e9334c1a221
+
+
+
+
+                
             return
     self.patientnameInput.clear()
     self.phoneInput.clear()
