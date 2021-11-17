@@ -13,6 +13,7 @@ def id_input(self):
             self.addressInput.setText(row[3])
             self.genderInput.setCurrentText(row[5])
             self.insuranceInput.setText(str(row[6]))
+            populateLabOrders(self)
             if row[7] == 1:
                 self.primaryphysicianInput.setCurrentText("Trix Tesimon")
             elif row[7] == 3:
@@ -23,12 +24,35 @@ def id_input(self):
                 self.primaryphysicianInput.setCurrentText("Trisha Cummungs")
             else:
                 self.primaryphysicianInput.setCurrentText("Cobby MacFle")
+
+            query = f"SELECT prescription_id FROM prescription WHERE patient_id = {self.patientIDInput.text()}"
+            med_query = self.conn.execute(query)
+            for med in med_query:
+                medication_query = f"SELECT name, dosage FROM medication WHERE medication_id = {med[0]}"
+                medicines = self.conn.execute(medication_query)
+                for medicine in medicines:
+                    self.medicationList.addItem(medicine[0] + " " + medicine[1])
+
+            query = f"SELECT scheduled_date FROM medical_encounter WHERE patient_id = {self.patientIDInput.text()}"
+            appt_query = self.conn.execute(query)
+            for appt in appt_query:
+                self.scheduleList.addItem(appt[0])
+
             return
     self.patientnameInput.clear()
     self.phoneInput.clear()
     self.dobInput.setDate(QDate(2000, 1, 1))
     self.addressInput.clear()
     self.insuranceInput.clear() 
+    self.medicationList.clear()
+    self.labList.clear()
+    self.scheduleList.clear()
+
+def populateLabOrders(self):
+        data = [int(self.patientIDInput.text()) if self.patientIDInput.text() else None]
+        cursor = self.conn.execute("SELECT * FROM lab_order WHERE patient_id = ?",tuple(data))
+        for row in cursor:
+            self.labList.addItem(str(row[0]) + " - " + str(row[1]))
 
 def commitPatient(self):
     msg = QMessageBox()
