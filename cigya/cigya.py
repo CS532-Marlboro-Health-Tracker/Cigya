@@ -56,7 +56,7 @@ class erUI(cigyaUI):
         self.signalSetup()
     
     def signalSetup(self):
-        self.commitpatientBtn.clicked.connect(lambda: er.verifyCommit(self))
+        self.commitpatientBtn.clicked.connect(lambda: er.commitPatient(self))
         self.patientIDInput.textChanged.connect(lambda: er.id_input(self))
         self.genderInput.addItem("Male")
         self.genderInput.addItem("Female")
