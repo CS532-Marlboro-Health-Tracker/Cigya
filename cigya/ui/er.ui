@@ -280,7 +280,7 @@
         <item>
          <widget class="QTabWidget" name="encounterNotes">
           <property name="currentIndex">
-           <number>3</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="practitionernotesTab">
            <attribute name="title">
@@ -340,7 +340,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QListView" name="labList"/>
+             <widget class="QListWidget" name="labList"/>
             </item>
            </layout>
           </item>
