@@ -7,17 +7,25 @@ def id_input(self):
     cursor = self.conn.execute("SELECT * FROM medical_encounter WHERE patient_id = ?",tuple(data))
     for row in cursor:
         if str(row[1]) == str(self.dateInput.date().toString("MM/dd/yyyy")):
+            query = f"SELECT name FROM user WHERE employee_id = {row[12]}"
+            physicians_list = self.conn.execute(query)
+            for physician in physicians_list:
+                self.practitionerseenInput.setCurrentText(str(physician[0]))
+                self.referralInput.setCurrentText(str(physician[0]))
+            date = [int(out) for out in row[9].split("/")]
+            self.followupInput.setDate(QDate(date[2], date[0], date[1]))
             self.practitionernotesInput.setText(row[5])
             self.vitalInput.setText(row[3])
             self.diagnosisInput.setText(row[6])
             self.treatmentInput.setText(row[7])
             return
-    # self.patientnameInput.clear()
-    # self.phoneInput.clear()
-    # self.dobInput.setDate(QDate(2000, 1, 1))
-    # self.addressInput.clear()
-    # self.insuranceInput.clear()
-    # self.primaryphysicianInput.clear()
+    self.practitionerseenInput.setCurrentText("Trix Tesimon")
+    self.followupInput.setDate(QDate(2000, 1, 1))
+    self.referralInput.setCurrentText("Trix Tesimon")
+    self.practitionernotesInput.clear()
+    self.vitalInput.clear()
+    self.diagnosisInput.clear()
+    self.treatmentInput.clear()
 
 def verifyCommit(self):
     msg = QMessageBox()

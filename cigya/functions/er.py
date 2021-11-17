@@ -23,12 +23,6 @@ def id_input(self):
                 self.primaryphysicianInput.setCurrentText("Trisha Cummungs")
             else:
                 self.primaryphysicianInput.setCurrentText("Cobby MacFle")
-
-
-
-
-
-                
             return
     self.patientnameInput.clear()
     self.phoneInput.clear()
