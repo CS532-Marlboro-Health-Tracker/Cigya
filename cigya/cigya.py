@@ -32,6 +32,7 @@ class loginUI(cigyaUI):
 
     def signalSetup(self):
         self.loginBtn.clicked.connect(lambda: login.login_clicked(self))
+        self.failLabel.setVisible(False)
         
 class mainUI(cigyaUI):
     def __init__(self, cls):

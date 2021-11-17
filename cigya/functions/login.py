@@ -10,5 +10,5 @@ def login_clicked(self):
                 self.hide()
                 print("Login Under:\nName = {}, Password = {}".format(row[0], row[1]))
                 return
-    print("Invalid Username/Password Combination")
+    self.failLabel.setVisible(True)
 

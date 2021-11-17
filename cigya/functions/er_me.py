@@ -45,20 +45,18 @@ def commitEncounter(self):
 
     if msg.exec() == QMessageBox.Yes:
         data = [
-            str(self.patientnameInput.text()),
-            str(self.phoneInput.text()),
-            str(self.addressInput.text()),
-            str(self.dobInput.date().toString("MM/dd/yyyy")),
-            str(self.genderInput.currentText()),
-            str(self.insuranceInput.text()),
-            str(self.primaryphysicianInput.currentText())
+            str(self.practitionernotesInput.toPlainText()),
+            str(self.vitalInput.toPlainText()),
+            str(self.diagnosisInput.toPlainText()),
+            str(self.treatmentInput.toPlainText())
         ]  
         
-        if self.patientIDInput.text():
-            sql = "INSERT INTO patient (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES (?, ?, ?, ?, ?, ?, ?)"
-        else:
-            sql = "UPDATE patient SET name = ?, number = ?, address = ?, birthdate = ?, gender = ?, carrier_id = ?, primary_physician = ? WHERE patient_id = ?"
-            data.append(int(self.patientIDInput.text()))
+        # if self.patientIDInput.text():
+        #     sql = "INSERT INTO medical_encounter (name, number, address, birthdate, gender, carrier_id, primary_physician) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        # else:
+        sql = """UPDATE medical_encounter SET notes = ?, vital_signs = ?, diagnosis = ?, treatment_plan = ? WHERE patient_id = ? AND scheduled_date = ?"""
+        data.append(int(self.patientIDInput.text()))
+        data.append(str(self.dateInput.date().toString("MM/dd/yyyy")))
 
         c = self.conn.cursor()
         c.execute(sql, tuple(data))
