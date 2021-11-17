@@ -3,7 +3,7 @@ from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QMessageBox
 
 def id_input(self):
-    cursor = self.conn.execute("SELECT patient_id, name, number, address, birthdate, gender, carrier_id FROM patient")
+    cursor = self.conn.execute("SELECT patient_id, name, number, address, birthdate, gender, carrier_id, primary_physician FROM patient")
     for row in cursor:
         if str(row[0]) == self.patientIDInput.text():
             self.patientnameInput.setText(row[1])
@@ -12,10 +12,17 @@ def id_input(self):
             self.dobInput.setDate(QDate(date[2], date[0], date[1]))
             self.addressInput.setText(row[3])
             self.genderInput.setCurrentText(row[5])
-            self.insuranceInput.setText(row[6])
-
-            
-            # self.primaryphysicianInput.setCurrentText(row[7])
+            self.insuranceInput.setText(str(row[6]))
+            if row[7] == 1:
+                self.primaryphysicianInput.setCurrentText("Trix Tesimon")
+            elif row[7] == 3:
+                self.primaryphysicianInput.setCurrentText("Bay Meneer")
+            elif row[7] == 8:
+                self.primaryphysicianInput.setCurrentText("Delphinia Millan")
+            elif row[7] == 10:
+                self.primaryphysicianInput.setCurrentText("Trisha Cummungs")
+            else:
+                self.primaryphysicianInput.setCurrentText("Cobby MacFle")
             return
     self.patientnameInput.clear()
     self.phoneInput.clear()
