@@ -282,16 +282,6 @@
           <property name="currentIndex">
            <number>3</number>
           </property>
-          <widget class="QWidget" name="vitalTab">
-           <attribute name="title">
-            <string>Vital Signs</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <item>
-             <widget class="QTextEdit" name="vitalInput"/>
-            </item>
-           </layout>
-          </widget>
           <widget class="QWidget" name="practitionernotesTab">
            <attribute name="title">
             <string>Practitioner Notes</string>
@@ -299,6 +289,16 @@
            <layout class="QVBoxLayout" name="verticalLayout_10">
             <item>
              <widget class="QTextEdit" name="practitionernotesInput"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="vitalTab">
+           <attribute name="title">
+            <string>Vital Signs</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QTextEdit" name="vitalInput"/>
             </item>
            </layout>
           </widget>

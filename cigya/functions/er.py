@@ -12,7 +12,7 @@ def id_input(self):
             self.dobInput.setDate(QDate(date[2], date[0], date[1]))
             self.addressInput.setText(row[3])
             self.genderInput.setCurrentText(row[5])
-            self.insuranceInput.setText(row[6])
+            self.insuranceInput.setText(str(row[6]))
 
             
             # self.primaryphysicianInput.setCurrentText(row[7])
