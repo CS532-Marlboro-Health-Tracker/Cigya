@@ -3,6 +3,14 @@ from PyQt5.QtCore import QDate
 from PyQt5.QtWidgets import QMessageBox
 
 def id_input(self):
+    self.patientnameInput.clear()
+    self.phoneInput.clear()
+    self.dobInput.setDate(QDate(2000, 1, 1))
+    self.addressInput.clear()
+    self.insuranceInput.clear() 
+    self.medicationList.clear()
+    self.labList.clear()
+    self.scheduleList.clear()
     cursor = self.conn.execute("SELECT patient_id, name, number, address, birthdate, gender, carrier_id, primary_physician FROM patient")
     for row in cursor:
         if str(row[0]) == self.patientIDInput.text():
@@ -37,16 +45,6 @@ def id_input(self):
             appt_query = self.conn.execute(query)
             for appt in appt_query:
                 self.scheduleList.addItem(appt[0])
-
-            return
-    self.patientnameInput.clear()
-    self.phoneInput.clear()
-    self.dobInput.setDate(QDate(2000, 1, 1))
-    self.addressInput.clear()
-    self.insuranceInput.clear() 
-    self.medicationList.clear()
-    self.labList.clear()
-    self.scheduleList.clear()
 
 def populateLabOrders(self):
         data = [int(self.patientIDInput.text()) if self.patientIDInput.text() else None]
